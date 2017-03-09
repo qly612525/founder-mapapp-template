@@ -1,6 +1,6 @@
 import { observable, computed } from 'mobx';
 
-export default class CounterStore {
+export default class CountStore {
     @observable counter = 0;
 
     increament() {

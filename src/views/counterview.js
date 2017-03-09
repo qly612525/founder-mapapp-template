@@ -8,7 +8,7 @@ import { observer } from 'mobx-react';
 
 
 /*=====  End of Component import  ======*/
-@observer(["counter"])
+@observer(['counter'])
 export default class CounterView extends Component {
 
     constructor() {
@@ -21,6 +21,7 @@ export default class CounterView extends Component {
         return (
             <div>
                 <p>Counter: {this.props.counter.counter}</p>
+                <p>Counter: {this.props.counter.counterT}</p>
                 <button onClick={this.onIncreament}>+</button>
                 <button onClick={this.onDecreament}>-</button>
             </div>

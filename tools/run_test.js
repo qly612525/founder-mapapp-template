@@ -63,13 +63,13 @@ function runAppTest() {
 function runCliTest() {
     const params = [
         'mocha',
-        testFile || path.join(prjRoot, 'test/cli/**/*.test.js'),
+        testFile || path.join(prjRoot, 'test/commands/**/*.test.js'),
     ];
 
     if (needReport) {
         params.splice(0, 0,
             'nyc',
-            '--report-dir=coverage/cli'
+            '--report-dir=coverage/commands'
         );
     }
     npmRun.execSync(params.join(' '), opts);
