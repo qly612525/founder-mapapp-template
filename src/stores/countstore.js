@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { observable, computed } from 'mobx';
 
 export default class CountStore {
     @observable counter = 0;
@@ -13,5 +13,9 @@ export default class CountStore {
 
     get counter() {
         return this.counter;
+    }
+
+    @computed get counterT() {
+        return this.counter * 2;
     }
 }

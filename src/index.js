@@ -20,6 +20,7 @@ class App extends React.Component {
         return (
             <div>
                 <p>Counter: {store.counter}</p>
+                <p>Counter: {store.counterT}</p>
                 <button onClick={this.onIncreament}>+</button>
                 <button onClick={this.onDecreament}>-</button>
             </div>
