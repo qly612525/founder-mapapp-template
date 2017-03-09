@@ -13,7 +13,7 @@ import CounterView from '../views/counterview';
 =========================================*/
 import CounterStore from '../stores/counterstore';
 
-
+const counter = new CounterStore();
 /*=====  End of state managements  ======*/
 
 
@@ -26,7 +26,7 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <Provider counter={new CounterStore()}>
+                <Provider counter={ counter }>
                     <CounterView />
                 </Provider>
             </div>
