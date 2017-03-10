@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 
 /*========================================
 =            Component import            =
@@ -8,7 +8,7 @@ import { observer } from 'mobx-react';
 
 
 /*=====  End of Component import  ======*/
-@observer(['counter'])
+@inject('counter') @observer
 export default class CounterView extends Component {
 
     constructor() {
