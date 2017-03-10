@@ -8,7 +8,7 @@ module.exports = {
             'mobx',
             'mobx-react',
             // 'whatwg-fetch',
-            // 'lodash',
+            'lodash',
             'react',
             'react-dom',
         ],

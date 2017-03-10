@@ -19,7 +19,7 @@ function startDevServer() {
         main: [
             `webpack-dev-server/client?http://localhost:${PORT}`,
             'webpack/hot/only-dev-server',
-            // './styles/index.scss',
+            './styles/index.scss',
             './index',
         ],
     };

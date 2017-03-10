@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
         main: [
             'babel-polyfill',
             // 'whatwg-fetch',
-            // './styles/index.scss',
+            './styles/index.scss',
             './index.js'
         ],
     },
@@ -24,6 +25,7 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
+        new ExtractTextPlugin("[name].css"),
         new webpack.DefinePlugin({
             ENV: '"dist"',
             'process.env': {
@@ -41,10 +43,10 @@ module.exports = {
             loader: 'file-loader'
         }, {
             test: /\.scss$/,
-            loader: 'style-loader!css-loader!sass-loader'
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
         }, {
             test: /\.css$/,
-            loader: 'style-loader!css-loader'
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
         }, {
             test: /\.json$/,
             loader: 'json-loader'

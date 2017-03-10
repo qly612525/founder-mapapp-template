@@ -19,7 +19,7 @@ export default class CounterView extends Component {
 
     render() {
         return (
-            <div>
+            <div className='counterview'>
                 <p>Counter: {this.props.counter.counter}</p>
                 <p>Counter: {this.props.counter.counterT}</p>
                 <button onClick={this.onIncreament}>+</button>

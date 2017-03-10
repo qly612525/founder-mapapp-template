@@ -27,6 +27,17 @@ const timestamp = require('crypto')
 // 拷贝src中的index.html到build中，修改其中的包引用地址(增加hash部分)
 const lines = helpers.getLines(path.join(__dirname, '../src/index.html'));
 helpers.removeLines(lines, '/.tmp/vendors.dll.js');
+
+// 找到'</head>'标签字符位置，在之前添加一行link
+let indexOfHead = null;
+lines.forEach((v, i) => {
+    if (v == '</head>') {
+        indexOfHead = i;
+    }
+});
+const linkString = `    <link rel="stylesheet" type="text/css" href="/static/main.css">`;
+lines.splice(indexOfHead, 0, linkString);
+
 let indexHtml = lines.join('\n');
 indexHtml = indexHtml.replace('/static/main.bundle.js', `/static/main.bundle.${timestamp}.js`);
 shell.ShellString(indexHtml).to(path.join(buildFolder, 'index.html'));
