@@ -9,7 +9,7 @@ module.exports = {
     entry: {
         main: [
             'babel-polyfill',
-            // 'whatwg-fetch',
+            'whatwg-fetch',
             './styles/index.scss',
             './index.js'
         ],
@@ -39,11 +39,19 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel-loader'
         }, {
-            test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            loader: 'file-loader'
+            test: /\.(woff|woff2)$/,
+            loader: 'url-loader',
+            options: {
+                name: 'fonts/[hash].[ext]',
+                limit: 5000,
+                mimetype: 'application/font-woff'
+            }
         }, {
-            test: /\.scss$/,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+            test: /\.(ttf|eot|svg)$/,
+            loader: 'file-loader',
+            options: {
+                name: 'fonts/[hash].[ext]'
+            }
         }, {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract('style-loader', 'css-loader')

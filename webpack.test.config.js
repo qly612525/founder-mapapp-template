@@ -18,8 +18,19 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel-loader'
         }, {
-            test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            loader: 'file-loader'
+            test: /\.(woff|woff2)$/,
+            loader: 'url-loader',
+            options: {
+                name: 'fonts/[hash].[ext]',
+                limit: 5000,
+                mimetype: 'application/font-woff'
+            }
+        }, {
+            test: /\.(ttf|eot|svg)$/,
+            loader: 'file-loader',
+            options: {
+                name: 'fonts/[hash].[ext]'
+            }
         }, {
             test: /\.scss$/,
             loader: 'style-loader!css-loader!sass-loader'
